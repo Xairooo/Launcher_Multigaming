@@ -1,0 +1,17 @@
+A faire pour l'api:
+
+Login / Register / Forgot Password
+Settings Api ( SiteName, Login, Register, Maintenance )
+Setings Launcher ( Couleurs, Logo, Nom, Maintenance )
+System de permission ( Rôles , Power )
+Users ( Gestions des Utilisateur, Personalistation compte (image, nom) )
+
+Jeu (liste jeux disponibles)
+Server (type du jeu, le nom, le modpack, par apport aux besoin du jeu)
+
+Liste des mods à refactor le fonctionnement par apport à la V5 :)
+Trouver la façon la plus optimisé pour un gros pack de mods, et les stoquer dans la bdd.
+
+Support (à la fin !) 
+
+Ne pas oublier les liens avec l'Indexer. ( crypter la class )
