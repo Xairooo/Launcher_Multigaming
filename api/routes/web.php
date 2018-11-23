@@ -11,8 +11,30 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+// Route::any('{path?}', function () {
+
+//     View::addExtension('html', 'php');
+//     return View::make('index');
+
+//  })->where("path", "^((?!api).)*$");
 
 
+/*
+|--------------------------------------------------------------------------
+| API routes
+|--------------------------------------------------------------------------
+*/
+  $router->group([
+    'prefix' => 'api'
+  ], function ($router) {
+    $router->get('/', function() {
+        return "API OK";
+     });
+
+
+     $router->get('/user', function() {
+        return ["name" => "Henri", "age" => 34, "email" => "root@root.com"];
+     });
+  });
+
+ 
