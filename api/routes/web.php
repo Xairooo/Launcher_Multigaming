@@ -1,40 +1,28 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
-|
-*/
+/**
+ * JSON Api
+ */
+$router->group(['prefix' => 'api'], function($router) {
 
-// Route::any('{path?}', function () {
+    /**
+     * Users & Profiles
+     */
+    $router->group(['prefix' => 'user'], function($router) {
+        $router->get('/', function() {
+          return ["name" => "Charle", "age" => 39, "email" => "root@root.com"];
+        });
+        $router->get('{name}', 'UserController@showProfile');
+        $router->post('{name}/update', 'UserController@updateProfile');
+    });
+    
+    /**
+     * Site status
+     */
+    $router->get('status', function() { /* Return JSON response */});
+});
 
-//     View::addExtension('html', 'php');
-//     return View::make('index');
-
-//  })->where("path", "^((?!api).)*$");
-
-
-/*
-|--------------------------------------------------------------------------
-| API routes
-|--------------------------------------------------------------------------
-*/
-  $router->group([
-    'prefix' => 'api'
-  ], function ($router) {
-    $router->get('/', function() {
-        return "API OK";
-     });
-
-
-     $router->get('/user', function() {
-        return ["name" => "Henri", "age" => 34, "email" => "root@root.com"];
-     });
-  });
-
- 
+/**
+ * Serve angularjs boot html
+ */
+$router->get('{path:.*}', function() { return view('index'); });
