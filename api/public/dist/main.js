@@ -251,7 +251,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\n  {{ user.email }}\n  {{ user.name }}\n</div>"
+module.exports = "<div>\n  User\n  <div *ngIf=\"user\">\n    {{ user.email }}\n    {{ user.name }}\n  </div>\n</div>"
 
 /***/ }),
 
@@ -499,7 +499,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/hubert_i/Launcher/Launcher_Multigaming/client/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/hubert_i/Launcher/V5-Webpanel/client/src/main.ts */"./src/main.ts");
 
 
 /***/ })
