@@ -26,17 +26,13 @@ export default class AuthService {
 
   login(login: string, password: string) {
     return this.apiService
-      .post<LoginDto>("/oauth/token", {
-        grant_type: "password",
-        client_id: this.configService.get().api.client_id,
-        client_secret: this.configService.get().api.client_secret,
-        username: login,
-        password: password,
-        scope: "*"
+      .post<LoginDto>("/auth/login", {
+        email: login,
+        password: password
       })
       .then(res => {
-        this.cookieService.set("access_token", res.access_token);
-        this.cookieService.set("refresh_token", res.access_token);
+        this.cookieService.set("access_token", res.token);
+        this.cookieService.set("refresh_token", res.token);
         this.isAuth = true;
         return res;
       });
