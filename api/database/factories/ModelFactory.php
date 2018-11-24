@@ -12,8 +12,12 @@
 */
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
+    $email = $faker->unique()->email;
+    echo $email . '
+    ';
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'name'     => $faker->name,
+        'email'    => $email,
+        'password' => \Illuminate\Support\Facades\Hash::make('12345'),
     ];
 });
