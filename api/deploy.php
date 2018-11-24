@@ -40,7 +40,7 @@ host('api')
 
 task('deploy:admin', function() {
     set('admin_path', '/var/www/dev/current/client');
-    run('cd {{admin_path}} && git pull && npm i && npm run build &');
+    run('cd {{admin_path}} && git pull && npm i && npm run build');
 });
 
 task('change:deploy_path', function () {
