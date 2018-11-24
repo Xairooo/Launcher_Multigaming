@@ -4,7 +4,6 @@ import LoginDto from "./login.dto";
 import ConfigService from "../../utils/config.service";
 import CookieService from "../../utils/cookie.service";
 import UserService from "../account/user/user.service";
-import UserDTO from "../account/user/user.dto";
 
 @injectable()
 export default class AuthService {
@@ -26,7 +25,7 @@ export default class AuthService {
 
   login(login: string, password: string) {
     return this.apiService
-      .post<LoginDto>("/auth/login", {
+      .post<LoginDto>("/api/auth/login", {
         email: login,
         password: password
       })

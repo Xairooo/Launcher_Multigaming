@@ -25,6 +25,7 @@ export default class ApiService {
 
         if (this.cookieService.has('access_token')) {
             headers['Authorization'] = 'Bearer ' + this.cookieService.get('access_token');
+            params.token = this.cookieService.get('access_token');
         }
 
         console.log('request to ' + url);
