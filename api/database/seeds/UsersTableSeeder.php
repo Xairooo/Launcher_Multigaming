@@ -12,5 +12,12 @@ class UsersTableSeeder extends Seeder
     {
         // create 10 users using the user factory
         factory(App\User::class, 10)->create();
+
+
+        \App\User::create([
+            'name' => 'Root',
+            'email'=> 'root@root.com',
+            'password'=> \Illuminate\Support\Facades\Hash::make('root')
+        ]);
     }
 }

@@ -8,9 +8,11 @@ $router->group(['prefix' => 'api'], function ($router) {
     /**
      * Users & Profiles
      */
-    $router->group(['prefix' => 'user'], function ($router) {
-        $router->get('/', function () {
-            return ["name" => "Charle", "age" => 39, "email" => "root@root.com"];
+    $router->group(['prefix' => 'user', 'middleware' => 'jwt.auth'], function ($router) {
+        $router->get('', function (\Illuminate\Http\Request $request) {
+            $user = $request->auth;
+            return $user;
+
         });
     });
 
@@ -18,6 +20,17 @@ $router->group(['prefix' => 'api'], function ($router) {
     $router->group(['prefix' => 'auth'], function ($router) {
         $router->post('login', 'AuthController@authenticate');
     });
+
+    $router->group(
+        ['middleware' => 'jwt.auth'],
+        function() use ($router) {
+            $router->get('users', function() {
+                $users = \App\User::all();
+                return response()->json($users);
+            });
+        }
+    );
+
     /**
      * Site status
      */
