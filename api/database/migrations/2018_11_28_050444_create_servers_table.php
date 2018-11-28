@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateServersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,22 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+
+        Schema::enableForeignKeyConstraints();
+
+
+        Schema::create('servers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('steam_uuid')->nullable();
-            $table->string('avatar')->default('default.png');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->unsignedInteger('game_id');
+            $table->string('ip');
+            $table->string('port');
             $table->timestamps();
+
+            $table->foreign('game_id')->references('id')->on('games');
         });
+
+        Schema::disableForeignKeyConstraints();
     }
 
     /**
@@ -33,6 +38,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('servers');
     }
 }

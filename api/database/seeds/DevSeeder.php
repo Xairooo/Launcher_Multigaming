@@ -29,5 +29,10 @@ class DevSeeder extends Seeder
             'password' => bcrypt('root'),
             'name' => 'Root'
         ]);
+
+
+        \App\Game::create([
+            'name' => 'arma3'
+        ]);
     }
 }
